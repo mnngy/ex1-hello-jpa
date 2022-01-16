@@ -78,6 +78,21 @@ public class JpaMain {
             System.out.println("============");
              */
 
+            /*
+            Member member1 = new Member();
+            member1.setId(250L);
+            member1.setUsername("member250");
+            member1.setRoleType(RoleType.USER);
+
+            Member member2 = new Member();
+            member2.setId(251L);
+            member2.setUsername("member210");
+            member2.setRoleType(RoleType.ADMIN);
+
+            em.persist(member1);
+            em.persist(member2);
+             */
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
