@@ -66,6 +66,18 @@ public class JpaMain {
             System.out.println("============");
              */
 
+            /*
+            Member member = em.find(Member.class, 150L);
+            member.setName("abcd");
+
+            // em.detach(member);
+            em.clear();
+
+            Member member2 = em.find(Member.class, 150L);
+
+            System.out.println("============");
+             */
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
