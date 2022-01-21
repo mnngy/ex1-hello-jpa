@@ -93,6 +93,14 @@ public class JpaMain {
             em.persist(member2);
              */
 
+            Member member = new Member();
+            member.setUsername("abc");
+
+            System.out.println("============");
+            em.persist(member);
+            System.out.println(member.getId());
+            System.out.println("============");
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
