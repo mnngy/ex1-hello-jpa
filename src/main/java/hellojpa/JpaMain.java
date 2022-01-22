@@ -11,7 +11,6 @@ public class JpaMain {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
         EntityManager em = emf.createEntityManager();
-
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
@@ -93,6 +92,7 @@ public class JpaMain {
             em.persist(member2);
              */
 
+            /*
             Member member = new Member();
             member.setUsername("abc");
 
@@ -100,6 +100,42 @@ public class JpaMain {
             em.persist(member);
             System.out.println(member.getId());
             System.out.println("============");
+             */
+
+            /*
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername("memberA");
+            member.setTeamId(team.getId());
+            em.persist(member);
+
+            Member findMember = em.find(Member.class, member.getId());
+            Long findTeamId = findMember.getTeamId();
+            Team findTeam = em.find(Team.class, findTeamId);
+             */
+
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setUsername("memberA");
+            member.setTeam(team);
+            em.persist(member);
+
+//            em.flush();
+//            em.clear();
+
+            Member findMember = em.find(Member.class, member.getId());
+            Team findTeam = findMember.getTeam();
+
+            Team newTeam = new Team();
+            newTeam.setName("newTeam");
+            em.persist(newTeam);
+            findMember.setTeam(newTeam);
 
             tx.commit();
         } catch (Exception e) {
