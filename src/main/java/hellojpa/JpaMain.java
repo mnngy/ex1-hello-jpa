@@ -139,6 +139,7 @@ public class JpaMain {
             }
              */
 
+            /*
             Team team = new Team();
             team.setName("teamA");
             em.persist(team); //select
@@ -161,6 +162,19 @@ public class JpaMain {
                 System.out.println("member = " + m);
             }
             System.out.println("====");
+             */
+
+            Member member = new Member();
+            member.setUsername("member1");
+
+            em.persist(member);
+
+            Team team = new Team();
+            team.setName("teamA");
+
+            team.getMembers().add(member);
+
+            em.persist(team);
 
             tx.commit();
         } catch (Exception e) {
