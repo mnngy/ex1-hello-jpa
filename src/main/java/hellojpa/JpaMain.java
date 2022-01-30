@@ -164,6 +164,7 @@ public class JpaMain {
             System.out.println("====");
              */
 
+            /*
             Member member = new Member();
             member.setUsername("member1");
 
@@ -175,6 +176,25 @@ public class JpaMain {
             team.getMembers().add(member);
 
             em.persist(team);
+             */
+
+
+            Movie movie = new Movie();
+            movie.setDirector("감독");
+            movie.setActor("배우");
+            movie.setName("영화제묵");
+            movie.setPrice(1000);
+
+            em.persist(movie);
+
+            em.flush();
+            em.clear();
+
+//            Movie movie1 = em.find(Movie.class, movie.getId());
+//            System.out.println("movie1 = " + movie1);
+
+            Item item = em.find(Item.class, movie.getName());
+            System.out.println("item = " + item);
 
             tx.commit();
         } catch (Exception e) {
